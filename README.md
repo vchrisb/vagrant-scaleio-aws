@@ -11,7 +11,7 @@ Vagrant script to deploy ScaleIO on AWS
 
 at least 3 nodes (an extra node for the Gateway will be added)  
 with more than ~10 nodes you need to switch to `--non-parallel` provisioning due to provider limitations  
-nodes = 3  
+`nodes = 3` 
 
 use "/dev/loop0" as dummy device  
 use "/dev/xvd[b-z]" e.g. "/dev/xvdb" for any additional EBS or ephemeral devices  
