@@ -40,6 +40,8 @@ keypair_name = "vagrant-scaleio"
 private_key_path = "vagrant-scaleio.pem"
 subnet_id = aws["subnet_id"]
 network = "172.31.0."
+# if you have a VPN connection to your VDC, you can omnit assigning elastic ip addresses to the nodes
+elastic_ip = true
 firstip = 10
 
 Vagrant.configure("2") do |config|
@@ -72,7 +74,7 @@ Vagrant.configure("2") do |config|
         aws.subnet_id = subnet_id
         aws.security_groups = security_groups
         aws.instance_type = instance_type
-        aws.elastic_ip = true
+        aws.elastic_ip = elastic_ip
         aws.terminate_on_shutdown = true
         aws.block_device_mapping = [{'DeviceName' => '/dev/sda1', 'Ebs.VolumeSize' => 8, 'Ebs.VolumeType' => 'gp2', 'Ebs.DeleteOnTermination' => 'true' }].concat(block_device_mapping)
         aws.keypair_name = keypair_name
