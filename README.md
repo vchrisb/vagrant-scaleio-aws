@@ -30,7 +30,7 @@ optional ports from external to connect to IM and MDM: 443,6611
 `keypair_name = "vagrant-scaleio"`  
 `private_key_path = "vagrant-scaleio.pem"`  
 `network = "172.31.0."`  
-if you have a VPN connection to your VDC, you should be able to omnit assigning elastic ip addresses to each node (the gateway will always get one)
+if you have a VPN connection to your VDC, you should be able to omnit assigning elastic ip addresses to each node (the gateway will always get one)  
 `elastic_ip = true`  
 
 ### `aws.yaml`
