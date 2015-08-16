@@ -33,7 +33,7 @@ optional ports from external to connect to IM and MDM: 443,6611
 `keypair_name = "vagrant-scaleio"`  
 `private_key_path = "vagrant-scaleio.pem"`  
 `subnet_id = aws["subnet_id"]`  
-`network = "172.31.0."  
+`network = "172.31.0."`
 
 ### `aws.yaml`
 
