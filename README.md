@@ -7,7 +7,7 @@ Vagrant script to deploy ScaleIO on AWS
 
 # Configuration
 
-## `Vagrantfile`
+### `Vagrantfile`
 
 at least 3 nodes (an extra node for the Gateway will be added)  
 with more than ~10 nodes you need to switch to `--non-parallel` provisioning due to provider limitations  
@@ -35,7 +35,7 @@ optional ports from external to connect to IM and MDM: 443,6611
 `subnet_id = aws["subnet_id"]`  
 `network = "172.31.0."  
 
-## `aws.yaml`
+### `aws.yaml`
 
 ```
 ---
