@@ -23,16 +23,12 @@ cheapest instance with local disk > 100GB = r3.2xlarge
 if ephemeral storage is available for your instance type, add it by {'DeviceName' => '/dev/sdb','VirtualName' => 'ephemeral0'} and {'DeviceName' => '/dev/sdc','VirtualName' => 'ephemeral1'}  
 for more EBS based storage add {'DeviceName' => device, 'Ebs.VolumeSize' => 100, 'Ebs.VolumeType' => 'gp2', 'Ebs.DeleteOnTermination' => 'true'}  
 `block_device_mapping = []`  
-`region = "us-east-1"`  
-`access_key_id = aws["access_key_id"]`  
-`secret_access_key = aws["secret_access_key"]`  
+`region = "us-east-1"`    
 required ports from VPC network: 6611,9011,7072,443,9099  
 required ports from external network: 22  
 optional ports from external to connect to IM and MDM: 443,6611  
-`security_groups = aws["security_groups"]`  
 `keypair_name = "vagrant-scaleio"`  
 `private_key_path = "vagrant-scaleio.pem"`  
-`subnet_id = aws["subnet_id"]`  
 `network = "172.31.0."`
 
 ### `aws.yaml`
