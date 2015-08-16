@@ -1,0 +1,7 @@
+---
+access_key_id: "ABCDERFGHIJKLMNOPQRS"
+secret_access_key: "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcd"
+subnet_id: "subnet-12345678"
+security_groups:
+ - "sg-12345678"
+ - "sg-12345678"
