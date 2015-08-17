@@ -55,5 +55,12 @@ To use this, you'll need to complete a few steps:
 1. `git clone https://github.com/vchrisb/vagrant-scaleio-aws.git`
 2. Modify `Vagrantfile` and `aws.yaml`
 3. `vagrant up --provider=aws`
-4. each node has `fio` installed and a 8GB device attached
-Performance testing kan be done on each node with e.g.: `sudo fio --filename=/dev/scinia --direct=1 --rw=randrw --refill_buffers --norandommap --randrepeat=0 --ioengine=libaio --bs=8k --rwmixread=70 --iodepth=16 --runtime=120 --group_reporting --name=8krandom70r30w`
+4. each node has `fio` installed and a 8GB device attached  
+Performance testing can be done on each node with e.g.:  
+`sudo fio --filename=/dev/scinia --direct=1 --rw=randrw --refill_buffers --norandommap --randrepeat=0 --ioengine=libaio --bs=8k --rwmixread=70 --iodepth=16 --runtime=120 --group_reporting --name=8krandom70r30w`
+5. connect to the ScaleIO installtion manger `https://public-gateway-ip` and/or to the MDM using a local ScaleIO GUI  
+`vagrant ssh-config gateway` and `vagrant ssh-config node-1` can be used to get the public IP adresses
+
+# Troubleshoot
+
+If you are facing a deployment error in the ScaleIO Installation phase, connect to the installtion manger `https://public-gateway-ip` and look at the `Monitor` tab. 
