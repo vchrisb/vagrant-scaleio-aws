@@ -112,15 +112,18 @@ Vagrant.configure("2") do |config|
       # disable requiretty
       aws.user_data =  "#!/bin/bash\nsed -i -e '/requiretty/d' /etc/sudoers\n"
     end
-
-    node.vm.provision "download", type: "shell", path: "scripts/download.sh"
+    packagePath = "/tmp/ScaleIO"
+    node.vm.provision "shell" do |s|
+      s.path = "scripts/download.sh"
+      s.args   = "--packagePath #{packagePath}"
+    end
     node.vm.provision "shell" do |s|
       s.path = "scripts/gateway.sh"
-      s.args   = "--gwPassword #{password}"
+      s.args   = "--gwPassword #{password} --packagePath #{packagePath}"
     end
     node.vm.provision "shell" do |s|
       s.path = "scripts/install.py"
-      s.args   = "--nodeUsername root --nodePassword #{rootPassword} --mdmPassword #{password} --liaPassword #{password} --gwUsername admin --gwPassword #{password} --gwIPaddress #{gwIPaddress} --packagePath /tmp/ScaleIO/ScaleIO_1.32_RHEL7_Download/ --mdm1IPaddress #{mdm1IPaddress} --mdm2IPaddress #{mdm2IPaddress} --tbIPaddress #{tbIPaddress} --nodeIPaddresses #{nodeIPaddresses} --device #{device}"
+      s.args   = "--nodeUsername root --nodePassword #{rootPassword} --mdmPassword #{password} --liaPassword #{password} --gwUsername admin --gwPassword #{password} --gwIPaddress #{gwIPaddress} --packagePath #{packagePath}/ScaleIO_1.32_RHEL7_Download/ScaleIO_1.32_RHEL7_Download/ --mdm1IPaddress #{mdm1IPaddress} --mdm2IPaddress #{mdm2IPaddress} --tbIPaddress #{tbIPaddress} --nodeIPaddresses #{nodeIPaddresses} --device #{device}"
     end
     node.vm.provision "shell" do |s|
       s.path = "scripts/config.py"

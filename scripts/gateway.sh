@@ -8,6 +8,10 @@ do
     PASSWORD="$2"
     shift
     ;;
+    -f|--packagePath)
+    packagePath="$2"
+    shift
+    ;;
     *)
     # unknown option
     ;;
@@ -15,12 +19,10 @@ do
   shift
 done
 
-# install EPEL
+# install EPEL for pip
 yum -y install epel-release
-
-cd /tmp/ScaleIO/ScaleIO_1.32_Gateway_for_Linux_Download
-yum install java-1.7.0-openjdk git python-pip -y
-GATEWAY_ADMIN_PASSWORD=${PASSWORD} rpm -Uv EMC-ScaleIO-gateway-*.rpm
+yum -y install java-1.7.0-openjdk git python-pip
+GATEWAY_ADMIN_PASSWORD=${PASSWORD} rpm -Uv ${packagePath}/ScaleIO_*_Gateway_for_Linux_Download/ScaleIO_*_Gateway_for_Linux_Download/EMC-ScaleIO-gateway-*.rpm
 
 #install required python modules
 pip install requests
